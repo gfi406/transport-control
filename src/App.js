@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/common/Navbar';
+import TrackListsPage from './pages/TrackListsPage';
+import VehiclesPage from './pages/VehiclesPage';
+import DriversPage from './pages/DriversPage';
+import ReportPage from './pages/ReportPage';
+import HomePage from './pages/HomePage';
+import { Container } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/track-lists" element={<TrackListsPage />} />
+          <Route path="/vehicles" element={<VehiclesPage />} />
+          <Route path="/drivers" element={<DriversPage />} />
+          <Route path="/reports" element={<ReportPage />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 }
 
